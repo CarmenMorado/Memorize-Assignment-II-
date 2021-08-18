@@ -33,13 +33,13 @@ class EmojiMemoryGame: ObservableObject {
             name: "Animals",
             emojis: ["🦄", "🦊", "🐥", "🦋", "🐬", "🐳", "🐞", "🐶", "🐱", "🐹", "🦉", "🐒"],
             numberOfPairsOfCards: 6,
-            color: "blue"
+            color: "orange"
         ),
         Theme(
             name: "Portraits",
             emojis: ["🗾", "🎑", "🏞", "🌅", "🌄", "🌠", "🎇", "🎆", "🌇", "🌆", "🏙", "🌃", "🌌","🌉","🌁"],
             numberOfPairsOfCards: 6,
-            color: "black"
+            color: "purple"
         ),
         Theme(
             name: "Plants",
@@ -64,6 +64,33 @@ class EmojiMemoryGame: ObservableObject {
     @Published private var model: MemoryGame<String>
     
     private var theme: Theme
+    
+    var themeName: String {
+        theme.name
+    }
+    
+    var themeColor: Color {
+        switch theme.color {
+        case "red":
+            return .red
+        case "yellow":
+            return .yellow
+        case "orange":
+            return .orange
+        case "purple":
+            return .purple
+        case "green":
+            return .green
+        case "blue":
+            return .blue
+        default:
+            return .orange
+        }
+    }
+    
+    var score: Int {
+        model.score
+    }
     
     var cards: Array<MemoryGame<String>.Card> {
         return model.cards
